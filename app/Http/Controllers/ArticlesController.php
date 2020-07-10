@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\User;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -30,6 +32,11 @@ class ArticlesController extends Controller
         // dump(request()->all());
 
         Article::create($this->validateArticle());
+
+        $user = new User();
+        
+
+        $tag = new Tag();
 
         return redirect("/articles");
 
