@@ -49,10 +49,28 @@
                     </div>
                 </div>
                 
-                <label class="label" for="body">Tags</label>
+                <label class="label" for="tag_id">Tags</label>
+                <div class="select is-multiple">
+                    <select multiple name="tag_id" size="3">
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <label class="label" for="user_id">Tags</label>
+                <div class="select is-multiple">
+                    <select multiple name="user_id" size="3">
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- <label class="label" for="body">Tags</label>
                 <div class="select is-multiple">
                     <select multiple size="3">
-                        <option value="Laravel">Laravel</option>
+                        <option value="Laravel">ggg</option>
                         <option value="PHP">PHP</option>
                         <option value="Education">Education</option>
                     </select>
@@ -64,7 +82,7 @@
                         <option value="1"> 1</option>
                         <option value="2"> 2</option>
                     </select>
-                </div>
+                </div> -->
                 
 
 
