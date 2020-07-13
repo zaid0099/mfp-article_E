@@ -1,6 +1,6 @@
  @extends('layout')
 
-@section("contantr")
+<!-- @section("contantr")
     <div id="wrapper">
 	<div id="page" class="container">
 	<div id="content">
@@ -13,7 +13,7 @@
     </div>
     </div>
     </div>
-@endsection
+@endsection -->
 
 @section("contant")
 <div id="wrapper">
@@ -24,7 +24,8 @@
 					<h2><a href="/articles/{{$article->id}}">{{ $article->title }}</a></h2>
 					<br>
                 	<p><img src="/tamplet/images/banner.jpg" alt="" class="image image-full" /> </p>
-			    	<p>{{ $article->body }}</p>
+                    <p>{{ $article->body }}</p>
+                    <p> {{ $article->id }} </p>
 				</div>
         	</div>
          @endforeach
