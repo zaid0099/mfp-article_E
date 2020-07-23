@@ -50,22 +50,27 @@
                 </div>
 
 
-                
+
                 <label class="label" for="tag_id">Tags</label>
                 <div class="select is-multiple">
 
-                    <select multiple name="tag_id" size="3">
+                    <select multiple name="tags[]" size="3">
                         @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                         @endforeach
                     </select>
+
+                    @error('excerpt')
+                    <p class="help is-danger"> {{ $message }} </p>
+                    @enderror
                 </div>
 
-                <label class="label" for="user_id">Tags</label>
+
+                <label class="label" for="user_id">User</label>
                 <div class="select is-multiple">
                     <select multiple name="user_id" size="3">
                         @foreach($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -86,7 +91,7 @@
                         <option value="2"> 2</option>
                     </select>
                 </div> -->
-                
+
 
 
                 <div class="field is-grouped">

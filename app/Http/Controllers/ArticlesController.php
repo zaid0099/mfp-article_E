@@ -34,23 +34,28 @@ class ArticlesController extends Controller
 
     public function creat()
     {
-        $tags = Tag::all();
-        $users = User::all();
-        return view("articles.creat", compact("tags", "users") );
+        return view("articles.creat", [
+            'tags' => Tag::all(),
+            'users' => User::all()
+        ]);
     }
 
 
     public function store(Request $reguest)
     {
-        
-        Article::create($this->validateArticle());
-        $article = Article::latest()->first();
+        // dd(request()->all());
+        $this->validateArticle();
 
+        $article = new Article(request(['title', 'excerpt', 'body', 'user_id']));
+        $article->save();
+
+        $article->tags()->attach(request('tags'));
         // -------- create article_tag --------
-        Article_tag::create([
-            'article_id' => $article->id,
-            'tag_id' => request('tag_id')
-        ]);
+        // $article = Article::latest()->first();
+        // Article_tag::create([
+        //     'article_id' => $article->id,
+        //     'tag_id' => request('tag_id')
+        // ]);
 
 
         return redirect("/articles");
@@ -67,7 +72,7 @@ class ArticlesController extends Controller
         // $article_id = $article->id;
         // $tag_id = request('tag_id');
         // Aritcle_tag::create($article_id, $tag_id);
-        
+
 
         // dd($article->id);
 
@@ -120,7 +125,8 @@ class ArticlesController extends Controller
             'title' => 'required',
             'excerpt' => 'required',
             'body' => 'required',
-            'user_id' => 'required'
+            'user_id' => 'required',
+            'tags' => 'exists:tags,id'
         ]);
     }
 
